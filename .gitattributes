@@ -1,0 +1,13 @@
+# Override language detection for specific files
+iris_ui.html linguist-language=Python
+*.html linguist-language=Python
+
+# Or alternatively, exclude the HTML from language stats
+# iris_ui.html linguist-detectable=false
+
+# Mark Python files explicitly
+*.py linguist-language=Python
+
+# Mark documentation files to be excluded from stats
+README.md linguist-documentation=true
+*.md linguist-documentation=true
