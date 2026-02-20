@@ -14,16 +14,22 @@ from datetime import datetime
 from iris_system import FixedSimpleIrisSystem
 
 app = FastAPI()
-iris_system = FixedSimpleIrisSystem()
+
+# Support for Render persistent disk or local development
+DATA_DIR = Path(os.getenv("DATA_DIR", "."))
+DB_PATH = DATA_DIR / "fixed_iris_test.db"
+UPLOADS_DIR = DATA_DIR / "uploads"
+ENROLLED_IMAGES_DIR = DATA_DIR / "enrolled_images"
 
 # Create directories for permanent storage
-UPLOADS_DIR = Path("uploads")
-ENROLLED_IMAGES_DIR = Path("enrolled_images")
+DATA_DIR.mkdir(exist_ok=True)
 UPLOADS_DIR.mkdir(exist_ok=True)
 ENROLLED_IMAGES_DIR.mkdir(exist_ok=True)
 
+iris_system = FixedSimpleIrisSystem(db_path=str(DB_PATH))
+
 # Serve static files (images)
-app.mount("/enrolled_images", StaticFiles(directory="enrolled_images"), name="enrolled_images")
+app.mount("/enrolled_images", StaticFiles(directory=str(ENROLLED_IMAGES_DIR)), name="enrolled_images")
 
 # Serve your HTML file - FIXED ENCODING
 @app.get("/", response_class=HTMLResponse)
