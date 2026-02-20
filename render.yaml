@@ -6,7 +6,7 @@ services:
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
-        value: "3.9.18"
+        value: "3.11.7"
       - key: DATA_DIR
         value: "/app/data"
     disk:
