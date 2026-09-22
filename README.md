@@ -1,5 +1,7 @@
 # Iris Authentication System
 
+will study this more
+
 A sophisticated biometric security system that uses iris recognition for user authentication. This project implements advanced neural pattern recognition algorithms to provide secure and accurate biometric identification using confidence scoring and Hamming distance analysis.
 
 ## 🌟 Features
